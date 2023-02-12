@@ -1,0 +1,20 @@
+type: object
+properties:
+  title:
+    type: string
+    description: Article title 
+    example: Bard Released
+  language:
+    type: string
+    description: Article language
+    example: English
+  publisher:
+    type: string
+    description: Article publisher name
+    example: BCC
+  topic:  
+    type: string
+    description: Article topic category
+    example: technology
+  date_time:
+    $ref: ./DateFormat.yaml

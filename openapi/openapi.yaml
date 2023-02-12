@@ -30,3 +30,7 @@ paths:
     $ref: 'paths/create-user-request.yaml'
   '/users/{id}':
     $ref: 'paths/users.yaml'
+  '/articles': 
+    $ref: 'paths/create-article-request.yaml'
+  '/articles/{id}':
+    $ref: 'paths/articles.yaml'

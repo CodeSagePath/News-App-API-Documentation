@@ -88,6 +88,7 @@ paths:
       tags:
         - Users
       summary: Fetch User
+      description: Fetch a user by id
       operationId: getUserById
       parameters:
         - name: id
@@ -155,16 +156,91 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        '200':
+          description: User deleted successfully
+        '400':
+          description: Invalid user supplied
+          $ref: '#/components/responses/Problem'
+        '404':
+          description: User not found
+          $ref: '#/components/responses/Problem'
+  /articles:
+    get:
+      tags:
+        - Articles
+      summary: Fetch Article
+      description: Fetch an article by id
+      operationId: getUserById
+      parameters:
+        - name: id
+          in: path
+          description: User id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        '403':
+          description: Forbidden
+          $ref: '#/components/responses/Problem'
+        '404':
+          description: User not found
+          $ref: '#/components/responses/Problem'
+    post:
+      tags:
+        - Articles
+      summary: Update a User
+      description: Update article of a user
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          description: The id for user that needs to be updated
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserId'
+              $ref: '#/components/schemas/Article'
         description: Updated user object
         required: true
       responses:
         '200':
-          description: User deleted successfully
+          description: Details Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        '400':
+          description: Invalid user supplied
+          $ref: '#/components/responses/Problem'
+        '404':
+          description: User not found
+          $ref: '#/components/responses/Problem'
+    delete:
+      tags:
+        - Articles
+      summary: Delete a User
+      description: Delete an Article
+      operationId: deleteArticle
+      parameters:
+        - name: id
+          in: path
+          description: The id for article to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Article deleted successfully
         '400':
           description: Invalid user supplied
           $ref: '#/components/responses/Problem'
@@ -284,13 +360,59 @@ components:
         instance:
           type: string
           description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-    UserId:
+    DateFormat:
+      type: object
+      properties:
+        year:
+          description: Article publish year
+          type: integer
+          format: int32
+          example: 2023
+        month:
+          description: Article publish month
+          type: integer
+          format: int32
+          example: 2
+        day:
+          description: Article publish day
+          type: integer
+          format: int32
+          example: 10
+        hour:
+          description: Article publish hour (time)
+          type: integer
+          format: int32
+          example: 22
+        minute:
+          description: Article publish minute (time)
+          type: integer
+          format: int32
+          example: 46
+    Article:
       type: object
       properties:
         id:
           description: Server generated unique id
           type: string
-          example: user_417K3BFfLV
+          example: article_417K3BFfLV
+        title:
+          type: string
+          description: Article title
+          example: Bard Released
+        language:
+          type: string
+          description: Article language
+          example: English
+        publisher:
+          type: string
+          description: Article publisher name
+          example: BCC
+        topic:
+          type: string
+          description: Article topic category
+          example: technology
+        date_time:
+          $ref: '#/components/schemas/DateFormat'
   responses:
     Problem:
       description: Problem

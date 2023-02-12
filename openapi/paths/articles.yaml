@@ -1,13 +1,13 @@
 get:
   tags:
-    - Users
-  summary: Fetch User
-  description: Fetch a user by id
-  operationId: getUserById
+    - Articles
+  summary: Fetch Article
+  description: Fetch an Article by id
+  operationId: getArticleById
   parameters:
     - name: id
       in: path
-      description: User id
+      description: Article id
       required: true
       schema:
         type: string
@@ -17,23 +17,23 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Users/User.yaml
+            $ref: ../components/schemas/Articles/Article.yaml
     '403':
       description: Forbidden
       $ref: ../components/responses/Problem.yaml
     '404':
-      description: User not found
+      description: Article not found
       $ref: ../components/responses/Problem.yaml
 post:
   tags:
-    - Users
-  summary: Update a User
-  description: Update details of a user
-  operationId: updateUser
+    - Articles
+  summary: Update an Article
+  description: Update details of an Article
+  operationId: updateArticle
   parameters:
     - name: id
       in: path
-      description: The id for user that needs to be updated
+      description: The id for article that needs to be updated
       required: true
       schema:
         type: string
@@ -41,8 +41,8 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/Users/User.yaml
-    description: Updated user object
+          $ref: ../components/schemas/Articles/Article.yaml
+    description: Updated Article object
     required: true
   responses:
     '200':
@@ -50,44 +50,44 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Users/User.yaml
+            $ref: ../components/schemas/Articles/Article.yaml
     '400':
-      description: Invalid user supplied
+      description: Invalid Article supplied
       $ref: ../components/responses/Problem.yaml
     '404':
-      description: User not found
+      description: Article not found
       $ref: ../components/responses/Problem.yaml
 delete:
   tags:
-    - Users
-  summary: Delete a User
-  description: Delete a user
-  operationId: deleteUser
+    - Articles
+  summary: Delete an Article
+  description: Delete an Article
+  operationId: deleteArticle
   parameters:
     - name: id
       in: path
-      description: The id for user that needs to be deleted
+      description: The id for article to be deleted
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: User deleted successfully
+      description: Article deleted successfully
     '400':
-      description: Invalid user supplied
+      description: Invalid Article supplied
       $ref: ../components/responses/Problem.yaml
     '404':
-      description: User not found
+      description: Article not found
       $ref: ../components/responses/Problem.yaml
 # get:
 #   tags:
-#     - Users
-#   summary: List all User
-#   operationId: getAllUserById
+#     - Article
+#   summary: List all Article
+#   operationId: getAllArticleById
 #   parameters:
 #     - name: id
 #       in: path
-#       description: User id
+#       description: Article id
 #       required: true
 #       schema:
 #         type: string
@@ -97,10 +97,10 @@ delete:
 #       content:
 #         application/json:
 #           schema:
-#             $ref: ../components/schemas/Users/User.yaml
+#             $ref: ../components/schemas/Articles/Article.yaml
 #     '403':
 #       description: Forbidden
 #       $ref: ../components/responses/Problem.yaml
 #     '404':
-#       description: User not found
+#       description: Article not found
 #       $ref: ../components/responses/Problem.yaml

@@ -1,0 +1,22 @@
+post:
+  tags:
+    - Articles
+  description: Add an Article
+  requestBody:
+    content: 
+      application/json:
+        schema:
+          $ref: ../components/schemas/Articles/CreateArticleRequest.yaml
+  responses:
+    '200':
+      description: Article created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Articles/Article.yaml
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

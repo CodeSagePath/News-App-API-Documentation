@@ -1,0 +1,28 @@
+type: object
+properties:
+  year:
+    description: Article publish year
+    type: integer
+    format: int32
+    example: 2023
+  month:
+    description: Article publish month
+    type: integer
+    format: int32
+    example: 02
+  day:
+    description: Article publish day
+    type: integer
+    format: int32
+    example: 10
+  hour:
+    description: Article publish hour (time)
+    type: integer
+    format: int32
+    example: 22
+  minute:
+    description: Article publish minute (time)
+    type: integer
+    format: int32
+    example: 46
+
