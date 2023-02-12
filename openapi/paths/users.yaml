@@ -1,0 +1,87 @@
+get:
+  tags:
+    - Users
+  summary: Fetch User
+  operationId: getUserById
+  parameters:
+    - name: id
+      in: path
+      description: User id
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Users/User.yaml
+    '403':
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml
+post:
+  tags:
+    - Users
+  summary: Update a User
+  description: Update details of a user
+  operationId: updateUser
+  parameters:
+    - name: id
+      in: path
+      description: The id for user that needs to be updated
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Users/User.yaml
+    description: Updated user object
+    required: true
+  responses:
+    '200':
+      description: Details Updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Users/User.yaml
+    '400':
+      description: Invalid user supplied
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml
+delete:
+  tags:
+    - Users
+  summary: Delete a User
+  description: Delete a user
+  operationId: deleteUser
+  parameters:
+    - name: id
+      in: path
+      description: The id for user that needs to be deleted
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Users/UserId.yaml
+    description: Updated user object
+    required: true
+  responses:
+    '200':
+      description: User deleted successfully
+    '400':
+      description: Invalid user supplied
+      $ref: ../components/responses/Problem.yaml
+    '404':
+      description: User not found
+      $ref: ../components/responses/Problem.yaml

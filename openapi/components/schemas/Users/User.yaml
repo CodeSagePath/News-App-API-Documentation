@@ -1,0 +1,37 @@
+type: object
+properties:
+  id: 
+    description: Server generated unique id
+    type: string
+    example: user_417K3BFfLV
+  username:
+    description: User supplied username
+    type: string
+    example: John09
+  first_name:
+    description: User first name
+    type: string
+    example: John
+  last_name:
+    description: User last name
+    type: string
+    example: Smith
+  email:
+    $ref: ./Email.yaml
+  age:
+    description: User age
+    type: integer
+    format: int32
+    example: 20 
+  gender:
+    description: User gender
+    type: string
+    example: M
+  address:
+    $ref: ./UserAddress.yaml
+  phone_number: 
+    description: User phone number
+    type: string
+    example: +91-1234567890
+
+

@@ -1,0 +1,6 @@
+type: object
+properties:
+  id: 
+    description: Server generated unique id
+    type: string
+    example: user_417K3BFfLV

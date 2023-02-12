@@ -1,0 +1,17 @@
+type: object
+properties:
+  city:
+    description: User city name
+    type: string
+    example: Bangalore
+  state:
+    description: User state name
+    type: string
+    example: Karnataka
+  postal_code:
+    description: User postal code
+    type: string
+    example: "1234"
+
+
+
